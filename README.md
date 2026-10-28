@@ -50,6 +50,18 @@ GitHub Pages (hospedagem estática)
 
 Não requer servidor nem credenciais. Alterações feitas no navegador **não são sincronizadas entre dispositivos**.
 
+## Testes automatizados
+
+A lógica de indicadores foi isolada em `kpis.js` e testada com o módulo nativo `node:test` do Node.js. A interface utiliza as mesmas funções.
+
+Execute localmente com Node.js 22 ou superior:
+
+```bash
+node --test tests/*.test.js
+```
+
+O workflow `.github/workflows/tests.yml` executa os testes a cada push e pull request no GitHub Actions. Consulte a aba **Actions** para verificar se a execução terminou com sucesso. Estes são testes unitários de KPIs; não são testes end-to-end de cliques no navegador.
+
 ## Limitações conhecidas
 
 - Sem autenticação, controle de acesso, API ou banco de dados.
@@ -57,7 +69,7 @@ Não requer servidor nem credenciais. Alterações feitas no navegador **não s�
 - Sem datas de transações: não há série temporal mensal confiável.
 - A meta é única; não existe cadastro de metas por ano/responsável.
 - Os dados não representam resultados reais de uma empresa.
-- A demonstração não possui testes automatizados nesta versão.
+- Há testes automatizados de indicadores, mas ainda não há testes automatizados de interface ou integração no navegador.
 
 ## Próximos passos técnicos
 
